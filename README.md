@@ -4,7 +4,7 @@ A fun browser-based game where you catch falling sticks before they hit the grou
 
 ## Play Online
 
-Visit [https://[your-github-username].github.io/catch-the-stick-game](https://[your-github-username].github.io/catch-the-stick-game) to play the game online.
+Visit [https://66kesara99.github.io/catch-the-stick-game](https://66kesara99.github.io/catch-the-stick-game) to play the game online.
 
 ## Development
 
@@ -12,7 +12,7 @@ To run this project locally:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/[your-github-username]/catch-the-stick-game.git
+git clone https://github.com/66kesara99/catch-the-stick-game.git
 cd catch-the-stick-game
 ```
 
