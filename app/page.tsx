@@ -16,6 +16,29 @@ export default function CatchTheStickGame() {
   const nextStickIdRef = useRef(1)
   const { toast } = useToast()
 
+  // Load high score from local storage on component mount
+  useEffect(() => {
+    const savedHighScore = localStorage.getItem("catchTheStickHighScore")
+    if (savedHighScore) {
+      setHighScore(parseInt(savedHighScore))
+    }
+  }, [])
+
+  // Update high score when current score exceeds it
+  useEffect(() => {
+    if (score > highScore) {
+      setHighScore(score)
+      localStorage.setItem("catchTheStickHighScore", score.toString())
+      
+      // Show celebration toast for new high score
+      toast({
+        title: "New High Score! 🎉",
+        description: `Congratulations! You've set a new record of ${score} sticks!`,
+        duration: 3000,
+      })
+    }
+  }, [score, highScore, toast])
+
   // Start the game
   const startGame = () => {
     setGameActive(true)
@@ -32,13 +55,13 @@ export default function CatchTheStickGame() {
     }
     setGameActive(false)
 
-    if (score > highScore) {
-      setHighScore(score)
-      toast({
-        title: "New High Score!",
-        description: `You set a new record: ${score}`,
-      })
-    }
+    // Show game over toast with final score
+    toast({
+      title: "Game Over!",
+      description: `Final Score: ${score} | High Score: ${highScore}`,
+      variant: "destructive",
+      duration: 3000,
+    })
   }
 
   // Handle stick click
